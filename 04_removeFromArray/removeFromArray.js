@@ -1,16 +1,12 @@
 const removeFromArray = function (arrTest, ...args) {
-  // find num in arr
-
   for (let arg of args) {
     for (let i = 0; i < arrTest.length; i++) {
-      if (arrTest[i] == arg) {
-        arrTest.splice(i, 1);
+      // Must be exact type
+      if (arrTest[i] === arg) {
+        arrTest.splice(i, 1); // Splice function erases arg at index
+        removeFromArray(arrTest, arg); // Loop to see if there are duplicates
       }
     }
-
-    // Feels like this should be recursion, but not working
-    // if num is in array, run the for loop
-    // then check if num is in the new array
   }
   return arrTest;
 };
